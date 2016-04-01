@@ -1,5 +1,5 @@
 # PyPyBox
 
-Web site : [http://artyprog.github.io/pypybox]
+Web site : http://artyprog.github.io/pypybox
 
 
