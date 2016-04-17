@@ -5,8 +5,8 @@ def index():
     return dict()
     
 @app.route("/echo/<str:msg>")    
-def echo(msgs):
-    return dict(message=msgs)
+def echo(msg):
+    return dict(message=msg)
     
 @app.route("/editor")
 def editor():
