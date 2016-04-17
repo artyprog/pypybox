@@ -4,7 +4,7 @@ from myapp import app
 def index():
     return dict()
     
-@app.route("/echo/<str:msg>")    
+@app.route("/echo/<str:msg>")
 def echo(msg):
     return dict(message=msg)
     
