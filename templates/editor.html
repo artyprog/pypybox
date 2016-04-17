@@ -1,0 +1,27 @@
+{{extend 'layout.html'}}
+
+<br />
+<div id="layout" class="container-fluid text-center"  style="width: 100%; height:800px;" ></div>
+
+<script type="text/javascript">
+$(function () {
+    var pstyle = 'border: 1px solid #dfdfdf; padding: 5px;';
+
+
+    $('#layout').w2layout({
+        name: 'layout',
+        padding: 4,
+        panels: [
+            { type: 'top', size: 50, resizable: true, style: pstyle, content: 'top' },
+            { type: 'left', size: 200, resizable: true, style: pstyle, content: 'left' },
+            { type: 'main', style: pstyle, content: 'main' },
+            { type: 'right', size: 200, resizable: true, style: pstyle, content: 'right' }
+        ]
+    });
+});
+</script>
+<br />
+
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>

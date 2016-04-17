@@ -1,0 +1,8 @@
+import geom
+
+def hello():
+    p = geom.Person()
+    console.log(p.age)
+    
+hello()
+geom.x()

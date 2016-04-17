@@ -1,0 +1,18 @@
+class Person:
+    def __init__(self):
+        self.age = 1000
+            
+def say():
+    p = Person()
+    print(p.age)
+    
+x = def():
+    console.log("from rapxxxydscript hello")
+    
+    
+
+       
+        
+        
+    
+    
