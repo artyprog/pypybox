@@ -9,6 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/w2ui/1.4.3/w2ui.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -21,6 +22,16 @@
 	  background-color: #f2f2f2;
       padding: 25px;
     }
+
+   #editor {
+     position:absolute;
+     top:0;
+     right:0;
+     bottom:0;
+     left:0;
+     text-align:left;
+   }
+</style>
   </style>
 </head>
 <body>
@@ -37,12 +48,11 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Home</a></li>
-       
+        <li><a href="/">Home</a></li>
         <li><a href="/gallery">Gallery</a></li>
         <li><a href="/editor">Editor</a></li>
-        <li><a href="#/">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="/">About</a></li>
+        <li><a href="/">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -54,7 +64,13 @@
 {{include}}
 
 <br><br>
-
-
+<script>
+$(document).ready(function () {
+        $('ul.nav > li').click(function (e) {
+            $('ul.nav > li').removeClass('active');
+            $(this).addClass('active');
+        });
+    });
+</script>
 </body>
 </html>
