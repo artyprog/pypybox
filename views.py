@@ -1,4 +1,4 @@
-from myapp import app
+from pypybox import app
 
 @app.route("/")
 def index():
