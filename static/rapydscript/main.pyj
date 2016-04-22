@@ -1,8 +1,15 @@
 import geom
 
-def hello():
-    p = geom.Person()
-    console.log(p.age)
+class Application:
+
+    def getEltById(self,id):
+        return document.getElementById(id);
+
+
+    def hello(self):
+        p = geom.Person()
+        console.log(p.age)
     
-hello()
-geom.x()
+
+
+window.app = Application()

@@ -2009,12 +2009,19 @@ var str = _$rapyd$_str;;
 
         var geom = _$rapyd$_modules["geom"];
         
-        function hello() {
+        function Application() {
+        }
+        Application.prototype.getEltById = function getEltById(id) {
+            var self = this;
+            return document.getElementById(id);
+        };
+        Application.prototype.hello = function hello() {
+            var self = this;
             var p;
             p = new geom.Person();
             console.log(p.age);
-        }
-        hello();
-        geom.x();
+        };
+
+        window.app = new Application();
     })();
 })();
