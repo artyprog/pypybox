@@ -1973,55 +1973,46 @@ var str = _$rapyd$_str;;
                 return Object.prototype.hasOwnProperty.call(arr, val);
             };
         })();
-    var _$rapyd$_modules = {};
-    _$rapyd$_modules["geom"] = {};
-
-    (function(){
-        var __name__ = "geom";
-        var x;
-        function Person() {
-            Person.prototype.__init__.apply(this, arguments);
-        }
-        Person.prototype.__init__ = function __init__() {
-            var self = this;
-            self.age = 1e3;
-        };
-
-        function say() {
-            var p;
-            p = new Person();
-            print(p.age);
-        }
-        x = function() {
-            console.log("from rapxxxydscript hello");
-        };
-        _$rapyd$_modules["geom"]["x"] = x;
-
-        _$rapyd$_modules["geom"]["Person"] = Person;
-
-        _$rapyd$_modules["geom"]["say"] = say;
-    })();
 
     (function(){
 
         var __name__ = "__main__";
 
 
-        var geom = _$rapyd$_modules["geom"];
-        
-        function Application() {
+        function Canvas() {
+            Canvas.prototype.__init__.apply(this, arguments);
         }
-        Application.prototype.getEltById = function getEltById(id) {
+        Canvas.prototype.__init__ = function __init__() {
             var self = this;
-            return document.getElementById(id);
+            self.canvas = document.getElementById("canvas");
+        };
+
+        function Scene() {
+        }
+        
+
+        function Application() {
+            Application.prototype.__init__.apply(this, arguments);
+        }
+        Application.prototype.__init__ = function __init__(canvas, ctx) {
+            var self = this;
+            self.canvas = canvas;
+            self.ctx = ctx;
         };
         Application.prototype.hello = function hello() {
             var self = this;
-            var p;
-            p = new geom.Person();
-            console.log(p.age);
+            console.log("Start Main");
+        };
+        Application.prototype.start = function start() {
+            var self = this;
+            self.canvas;
         };
 
-        window.app = new Application();
+        $(function() {
+            var canvas, ctx;
+            canvas = new Canvas().canvas;
+            ctx = canvas.getContext("2d");
+            window.app = new Application(canvas, ctx);
+        });
     })();
 })();

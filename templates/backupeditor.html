@@ -1,0 +1,33 @@
+  function setEditor() {
+    var pstyle = 'padding: 5px;';
+    var pstyletop = "margin:5px; padding:4px;background:transparent; margin-left:0px;";
+    var pstylecanvas="border:1px solid #bbbbbb; margin:0;margin-left:4px; \
+        margin-right:3px;text-align:left; background:#fff;";
+    
+    $('#layout').w2layout({
+      name: 'layout',
+      padding: 0,
+      panels: [
+        { type: 'top', size: 48, resizable: false, style: pstyletop, content: $("#top").html() },
+        { type: 'left', size: 220, resizable: true, style: pstyle, content: 'left', hidden:true },
+        { type: 'right', size:'50%', resizable: true, style: pstyle, content:  editor.container },
+        { type: 'main', size: '50%', resizable: true, style:pstylecanvas, content: "<canvas id='canvas'></canvas>" },
+        { type: 'bottom', size: 60, resizable: true, style: pstyle, content: 'bottom', hidden:false },
+            ]
+      });
+    }
+ 
+   function initCanvas() {
+       var canvas = document.getElementById("canvas");
+       var ctx = canvas.getContext("2d");
+       canvas.width =  500;
+       canvas.height = 500;
+       ctx.beginPath();
+       ctx.fillStyle = "#ff7800";
+       ctx.arc(75, 75, 10, 0, Math.PI*2, true); 
+       ctx.closePath();
+       ctx.fill();
+   }
+   
+   setEditor();
+   initCanvas();

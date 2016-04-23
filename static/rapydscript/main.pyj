@@ -1,15 +1,23 @@
-import geom
+class Canvas:
+    def __init__(self):
+        self.canvas = document.getElementById("canvas")
+        
+class Scene:
+    pass
 
 class Application:
-
-    def getEltById(self,id):
-        return document.getElementById(id);
-
-
+    def __init__(self, canvas, ctx):
+        self.canvas = canvas
+        self.ctx = ctx
+      
     def hello(self):
-        p = geom.Person()
-        console.log(p.age)
-    
-
-
-window.app = Application()
+        console.log("Start Main")
+        
+    def start(self):
+        self.canvas   
+        
+$(def():        
+    canvas = Canvas().canvas
+    ctx = canvas.getContext('2d')
+    window.app = Application(canvas, ctx)
+)
