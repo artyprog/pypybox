@@ -1979,6 +1979,18 @@ var str = _$rapyd$_str;;
         var __name__ = "__main__";
 
 
+        "\nPoint\nGeometry\nBounds\nColor\nGradient\nAffineTransform\nTransform\nBezier\nPathElement\nPath\nCache\nAsynchronousRequest\nImage\nPixels\nMouse\nCanvas\n";
+        function Nodebox() {
+            Nodebox.prototype.__init__.apply(this, arguments);
+        }
+        Nodebox.prototype.__init__ = function __init__() {
+            var self = this;
+        };
+        Nodebox.prototype.get_nbx_canvas = function get_nbx_canvas() {
+            var self = this;
+            return new nbx.canv();
+        };
+
         function Canvas() {
             Canvas.prototype.__init__.apply(this, arguments);
         }
@@ -1995,6 +2007,9 @@ var str = _$rapyd$_str;;
                 height = _$rapyd$_kwargs_obj.height;
             }
             var _$rapyd$_unpack;
+            self.nbx = new Nodebox();
+            self.canv = nbx.get_nbx_canvas();
+            console.log(self.canv);
             _$rapyd$_unpack = [width, height];
             self.width = _$rapyd$_unpack[0];
             self.height = _$rapyd$_unpack[1];
@@ -2036,7 +2051,7 @@ var str = _$rapyd$_str;;
             var self = this;
             w2ui["layout"].show(name);
         };
-        UIEditor.prototype.getContent = function getContent(content) {
+        UIEditor.prototype.getContent = function getContent() {
             var self = this;
             return ace_editor.getSession().getValue();
         };

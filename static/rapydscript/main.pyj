@@ -1,12 +1,41 @@
+"""
+Point
+Geometry
+Bounds
+Color
+Gradient
+AffineTransform
+Transform
+Bezier
+PathElement
+Path
+Cache
+AsynchronousRequest
+Image
+Pixels
+Mouse
+Canvas
+"""
 
+class Nodebox:
+    def __init__(self):
+        pass
+        
+    def get_nbx_canvas(self):
+        return new nbx.canv()
 
 class Canvas:
+   
     def __init__(self, width=500, height=500):
+        self.nbx = Nodebox()
+        self.canv = nbx.get_nbx_canvas()
+        console.log(self.canv)
         self.width, self.height = width, height
         self.canvas = document.getElementById('canvas')
         self.canvas.width = width
         self.canvas.height = height
         self.ctx = self.canvas.getContext('2d')
+        
           
     def test(self):
         self.ctx.fillStyle = "#ff00ff"
@@ -74,5 +103,4 @@ class Application:
         
 $(def():        
     window.app = Application();
-   
 )
