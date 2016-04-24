@@ -1,16 +1,16 @@
 window.setEditor = function () {
     
-    window.editor = ace.edit("editor");
-    editor.setTheme("ace/theme/tomorrow_night_eighties");
-    editor.getSession().setMode("ace/mode/python");
-    editor.setOption("showPrintMargin", false);
-    editor.commands.addCommand({
+    window.ace_editor = ace.edit("editor");
+    ace_editor.setTheme("ace/theme/tomorrow_night_eighties");
+    ace_editor.getSession().setMode("ace/mode/python");
+    ace_editor.setOption("showPrintMargin", false);
+    ace_editor.commands.addCommand({
         name: "showKeyboardShortcuts",
         bindKey: {win: "Ctrl-Alt-h", mac: "Command-Alt-h"},
         exec: function(editor) {
             ace.config.loadModule("ace/ext/keybinding_menu", function(module) {
-                module.init(editor);
-                editor.showKeyboardShortcuts()
+                module.init(ace_editor);
+                ace_editor.showKeyboardShortcuts()
             })
         }
     })
@@ -29,8 +29,8 @@ window.setEditor = function () {
             panels: [
             { type: 'top', size: 48, resizable: false, style: pstyletop, content: $("#top").html() },
             { type: 'left', size: 220, resizable: true, style: pstyle, content: 'left', hidden:true },
-            { type: 'right', size:'50%', resizable: true, style: pstyle, content:  editor.container },
-            { type: 'main', size: '50%', resizable: true, style:pstylecanvas, content: "<canvas id='canvas'></canvas>" },
+            { type: 'main', size:'50%', resizable: true, style: pstyle, content:  ace_editor.container },
+            { type: 'right', size: '50%', resizable: true, style:pstylecanvas, content: "<canvas id='canvas'></canvas>" },
             { type: 'bottom', size: 60, resizable: true, style: pstyle, content: 'bottom', hidden:false },
                 ]
             });

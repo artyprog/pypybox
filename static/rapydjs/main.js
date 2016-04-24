@@ -1979,16 +1979,54 @@ var str = _$rapyd$_str;;
         var __name__ = "__main__";
 
 
-        function Scene() {
+        function Canvas() {
+            Canvas.prototype.__init__.apply(this, arguments);
         }
-        
+        Canvas.prototype.__init__ = function __init__() {
+            var self = this;
+            var width = (arguments[0] === undefined || ( 0 === arguments.length-1 && arguments[arguments.length-1] !== null && typeof arguments[arguments.length-1] === "object" && arguments[arguments.length-1] [_$rapyd$_kwargs_symbol] === true)) ? (500) : arguments[0];
+            var height = (arguments[1] === undefined || ( 1 === arguments.length-1 && arguments[arguments.length-1] !== null && typeof arguments[arguments.length-1] === "object" && arguments[arguments.length-1] [_$rapyd$_kwargs_symbol] === true)) ? (500) : arguments[1];
+            var _$rapyd$_kwargs_obj = arguments[arguments.length-1];
+            if (_$rapyd$_kwargs_obj === null || typeof _$rapyd$_kwargs_obj !== "object" || _$rapyd$_kwargs_obj [_$rapyd$_kwargs_symbol] !== true) _$rapyd$_kwargs_obj = {};
+            if (Object.prototype.hasOwnProperty.call(_$rapyd$_kwargs_obj, "width")){
+                width = _$rapyd$_kwargs_obj.width;
+            }
+            if (Object.prototype.hasOwnProperty.call(_$rapyd$_kwargs_obj, "height")){
+                height = _$rapyd$_kwargs_obj.height;
+            }
+            var _$rapyd$_unpack;
+            _$rapyd$_unpack = [width, height];
+            self.width = _$rapyd$_unpack[0];
+            self.height = _$rapyd$_unpack[1];
+            self.canvas = document.getElementById("canvas");
+            self.canvas.width = width;
+            self.canvas.height = height;
+            self.ctx = self.canvas.getContext("2d");
+        };
+        Canvas.prototype.test = function test() {
+            var self = this;
+            self.ctx.fillStyle = "#ff00ff";
+            self.ctx.fillRect(0, 0, self.width, self.height);
+        };
 
         function UIEditor() {
             UIEditor.prototype.__init__.apply(this, arguments);
         }
         UIEditor.prototype.__init__ = function __init__() {
             var self = this;
-            setEditor();
+            window.setEditor();
+            self.bind_buttons();
+        };
+        UIEditor.prototype.bind_buttons = function bind_buttons() {
+            var self = this;
+            $("#save").click(function(e) {
+                self.save();
+                return false;
+            });
+            $("#run").click(function(e) {
+                self.run();
+            });
+            return false;
         };
         UIEditor.prototype.hidePanel = function hidePanel(name) {
             var self = this;
@@ -1998,14 +2036,34 @@ var str = _$rapyd$_str;;
             var self = this;
             w2ui["layout"].show(name);
         };
-        UIEditor.prototype.getContent = function getContent() {
+        UIEditor.prototype.getContent = function getContent(content) {
             var self = this;
+            return ace_editor.getSession().getValue();
         };
         UIEditor.prototype.setContent = function setContent() {
             var self = this;
         };
+        UIEditor.prototype.save = function save() {
+            var self = this;
+            console.log("saving");
+        };
         UIEditor.prototype.run = function run() {
             var self = this;
+            alert(self.getContent());
+        };
+
+        function Scene() {
+            Scene.prototype.__init__.apply(this, arguments);
+        }
+        Scene.prototype.__init__ = function __init__() {
+            var self = this;
+            self.ed = new UIEditor();
+            self.canvas = new Canvas();
+            self.canvas.test();
+        };
+        Scene.prototype.run = function run() {
+            var self = this;
+            alert(ace_editor.getSession().getValue());
         };
 
         function Application() {
@@ -2020,7 +2078,8 @@ var str = _$rapyd$_str;;
         };
         Application.prototype.setEditor = function setEditor() {
             var self = this;
-            self.ed = new UIEditor();
+            self.scene = new Scene();
+            self.scene_editor = self.scene.ed;
         };
         Application.prototype.setPage = function setPage(name) {
             var self = this;

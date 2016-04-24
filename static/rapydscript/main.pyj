@@ -1,11 +1,32 @@
 
-class Scene:
-    pass
+
+class Canvas:
+    def __init__(self, width=500, height=500):
+        self.width, self.height = width, height
+        self.canvas = document.getElementById('canvas')
+        self.canvas.width = width
+        self.canvas.height = height
+        self.ctx = self.canvas.getContext('2d')
+          
+    def test(self):
+        self.ctx.fillStyle = "#ff00ff"
+        self.ctx.fillRect(0, 0, self.width, self.height);
 
 
 class UIEditor:
     def __init__(self):
-        setEditor()
+        window.setEditor()
+        self.bind_buttons()
+                    
+    def bind_buttons(self):
+        $("#save").click(def (e):
+                self.save()
+                return False
+        )    
+            
+        $("#run").click(def (e):
+                self.run()
+        )       return False         
                     
     def hidePanel(self, name):
         w2ui['layout'].hide(name)
@@ -14,15 +35,29 @@ class UIEditor:
         w2ui['layout'].show(name)
         
     def getContent(self):
-        pass
+        return ace_editor.getSession().getValue()
         
     def setContent(self):
         pass
         
+    def save(self):
+        console.log("saving")
+                
     def run(self):
-        pass
+        alert(self.getContent())
             
-            
+ 
+class Scene:
+    def __init__(self):
+        self.ed = UIEditor()
+        self.canvas = Canvas()
+        self.canvas.test()
+        
+    def run(self):
+        alert(ace_editor.getSession().getValue())        
+        
+
+                      
 class Application:
     def __init__(self):
         pass 
@@ -31,12 +66,13 @@ class Application:
         console.log("Start Main")
         
     def setEditor(self):
-        self.ed = UIEditor()
+        self.scene = Scene()
+        self.scene_editor = self.scene.ed
         
-
     def setPage(self, name):
         pass
         
 $(def():        
-    window.app = Application() 
+    window.app = Application();
+   
 )
