@@ -1979,40 +1979,55 @@ var str = _$rapyd$_str;;
         var __name__ = "__main__";
 
 
-        function Canvas() {
-            Canvas.prototype.__init__.apply(this, arguments);
-        }
-        Canvas.prototype.__init__ = function __init__() {
-            var self = this;
-            self.canvas = document.getElementById("canvas");
-        };
-
         function Scene() {
         }
         
 
+        function UIEditor() {
+            UIEditor.prototype.__init__.apply(this, arguments);
+        }
+        UIEditor.prototype.__init__ = function __init__() {
+            var self = this;
+            setEditor();
+        };
+        UIEditor.prototype.hidePanel = function hidePanel(name) {
+            var self = this;
+            w2ui["layout"].hide(name);
+        };
+        UIEditor.prototype.showPanel = function showPanel(name) {
+            var self = this;
+            w2ui["layout"].show(name);
+        };
+        UIEditor.prototype.getContent = function getContent() {
+            var self = this;
+        };
+        UIEditor.prototype.setContent = function setContent() {
+            var self = this;
+        };
+        UIEditor.prototype.run = function run() {
+            var self = this;
+        };
+
         function Application() {
             Application.prototype.__init__.apply(this, arguments);
         }
-        Application.prototype.__init__ = function __init__(canvas, ctx) {
+        Application.prototype.__init__ = function __init__() {
             var self = this;
-            self.canvas = canvas;
-            self.ctx = ctx;
         };
         Application.prototype.hello = function hello() {
             var self = this;
             console.log("Start Main");
         };
-        Application.prototype.start = function start() {
+        Application.prototype.setEditor = function setEditor() {
             var self = this;
-            self.canvas;
+            self.ed = new UIEditor();
+        };
+        Application.prototype.setPage = function setPage(name) {
+            var self = this;
         };
 
         $(function() {
-            var canvas, ctx;
-            canvas = new Canvas().canvas;
-            ctx = canvas.getContext("2d");
-            window.app = new Application(canvas, ctx);
+            window.app = new Application();
         });
     })();
 })();

@@ -1,23 +1,42 @@
-class Canvas:
-    def __init__(self):
-        self.canvas = document.getElementById("canvas")
-        
+
 class Scene:
     pass
 
+
+class UIEditor:
+    def __init__(self):
+        setEditor()
+                    
+    def hidePanel(self, name):
+        w2ui['layout'].hide(name)
+        
+    def showPanel(self, name):
+        w2ui['layout'].show(name)
+        
+    def getContent(self):
+        pass
+        
+    def setContent(self):
+        pass
+        
+    def run(self):
+        pass
+            
+            
 class Application:
-    def __init__(self, canvas, ctx):
-        self.canvas = canvas
-        self.ctx = ctx
+    def __init__(self):
+        pass 
       
     def hello(self):
         console.log("Start Main")
         
-    def start(self):
-        self.canvas   
+    def setEditor(self):
+        self.ed = UIEditor()
+        
+
+    def setPage(self, name):
+        pass
         
 $(def():        
-    canvas = Canvas().canvas
-    ctx = canvas.getContext('2d')
-    window.app = Application(canvas, ctx)
+    window.app = Application() 
 )

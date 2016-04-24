@@ -1,4 +1,4 @@
-$(function () {
+window.setEditor = function () {
     
     window.editor = ace.edit("editor");
     editor.setTheme("ace/theme/tomorrow_night_eighties");
@@ -35,5 +35,7 @@ $(function () {
                 ]
             });
         }
-    setEditor();
-});
+ 
+     return setEditor();
+        
+};
