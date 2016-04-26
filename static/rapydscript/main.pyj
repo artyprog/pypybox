@@ -44,7 +44,7 @@ class Canvas:
 
 class UIEditor:
     def __init__(self):
-        window.setEditor()
+        window.setEditor(app.panel)
         self.bind_buttons()
                     
     def bind_buttons(self):
@@ -82,11 +82,8 @@ class Scene:
         self.canvas = Canvas()
         self.canvas.test()
         
-    def run(self):
-        alert(ace_editor.getSession().getValue())        
-        
 
-                      
+                    
 class Application:
     def __init__(self):
         pass 
@@ -94,7 +91,9 @@ class Application:
     def hello(self):
         console.log("Start Main")
         
-    def setEditor(self):
+    def setEditor(self, panel):
+        
+        self.panel = panel 
         self.scene = Scene()
         self.scene_editor = self.scene.ed
         
@@ -103,4 +102,5 @@ class Application:
         
 $(def():        
     window.app = Application();
+    app.setEditor("right")
 )

@@ -2029,7 +2029,7 @@ var str = _$rapyd$_str;;
         }
         UIEditor.prototype.__init__ = function __init__() {
             var self = this;
-            window.setEditor();
+            window.setEditor(app.panel);
             self.bind_buttons();
         };
         UIEditor.prototype.bind_buttons = function bind_buttons() {
@@ -2076,10 +2076,6 @@ var str = _$rapyd$_str;;
             self.canvas = new Canvas();
             self.canvas.test();
         };
-        Scene.prototype.run = function run() {
-            var self = this;
-            alert(ace_editor.getSession().getValue());
-        };
 
         function Application() {
             Application.prototype.__init__.apply(this, arguments);
@@ -2091,8 +2087,9 @@ var str = _$rapyd$_str;;
             var self = this;
             console.log("Start Main");
         };
-        Application.prototype.setEditor = function setEditor() {
+        Application.prototype.setEditor = function setEditor(panel) {
             var self = this;
+            self.panel = panel;
             self.scene = new Scene();
             self.scene_editor = self.scene.ed;
         };
@@ -2102,6 +2099,7 @@ var str = _$rapyd$_str;;
 
         $(function() {
             window.app = new Application();
+            app.setEditor("right");
         });
     })();
 })();
