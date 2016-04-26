@@ -2029,19 +2029,24 @@ var str = _$rapyd$_str;;
         }
         UIEditor.prototype.__init__ = function __init__() {
             var self = this;
-            window.setEditor(app.panel);
             self.bind_buttons();
         };
         UIEditor.prototype.bind_buttons = function bind_buttons() {
             var self = this;
-            $("#save").click(function(e) {
-                self.save();
+            $("#save_script").click(function(e) {
+                self.saveScript()();
                 return false;
             });
             $("#run").click(function(e) {
                 self.run();
+                return false;
             });
-            return false;
+            $("#rotateh").click(function(e) {
+                app.setAceEditor("preview");
+            });
+            $("#rotatev").click(function(e) {
+                app.setAceEditor("right");
+            });
         };
         UIEditor.prototype.hidePanel = function hidePanel(name) {
             var self = this;
@@ -2058,7 +2063,7 @@ var str = _$rapyd$_str;;
         UIEditor.prototype.setContent = function setContent() {
             var self = this;
         };
-        UIEditor.prototype.save = function save() {
+        UIEditor.prototype.saveScript = function saveScript() {
             var self = this;
             console.log("saving");
         };
@@ -2067,39 +2072,27 @@ var str = _$rapyd$_str;;
             alert(self.getContent());
         };
 
-        function Scene() {
-            Scene.prototype.__init__.apply(this, arguments);
-        }
-        Scene.prototype.__init__ = function __init__() {
-            var self = this;
-            self.ed = new UIEditor();
-            self.canvas = new Canvas();
-            self.canvas.test();
-        };
-
         function Application() {
             Application.prototype.__init__.apply(this, arguments);
         }
         Application.prototype.__init__ = function __init__() {
             var self = this;
         };
-        Application.prototype.hello = function hello() {
-            var self = this;
-            console.log("Start Main");
-        };
-        Application.prototype.setEditor = function setEditor(panel) {
+        Application.prototype.setAceEditor = function setAceEditor(panel) {
             var self = this;
             self.panel = panel;
-            self.scene = new Scene();
-            self.scene_editor = self.scene.ed;
+            window.setAceEditor(self.panel);
+            self.editor = new UIEditor();
+            self.canvas = new Canvas();
         };
-        Application.prototype.setPage = function setPage(name) {
+        Application.prototype.start = function start() {
             var self = this;
+            self.setAceEditor("right");
         };
 
         $(function() {
             window.app = new Application();
-            app.setEditor("right");
+            app.start();
         });
     })();
 })();

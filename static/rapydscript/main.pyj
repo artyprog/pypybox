@@ -44,19 +44,30 @@ class Canvas:
 
 class UIEditor:
     def __init__(self):
-        window.setEditor(app.panel)
+        
         self.bind_buttons()
                     
     def bind_buttons(self):
-        $("#save").click(def (e):
-                self.save()
+        $("#save_script").click(def (e):
+                self.saveScript()()
                 return False
         )    
             
         $("#run").click(def (e):
                 self.run()
-        )       return False         
-                    
+                return False
+        )
+        
+        $("#rotateh").click(
+            def(e):
+                app.setAceEditor("preview")
+        )         
+              
+        $("#rotatev").click(
+            def(e):
+                app.setAceEditor("right")
+        ) 
+                            
     def hidePanel(self, name):
         w2ui['layout'].hide(name)
         
@@ -69,38 +80,28 @@ class UIEditor:
     def setContent(self):
         pass
         
-    def save(self):
+    def saveScript(self):
         console.log("saving")
                 
     def run(self):
         alert(self.getContent())
             
  
-class Scene:
-    def __init__(self):
-        self.ed = UIEditor()
-        self.canvas = Canvas()
-        self.canvas.test()
-        
-
-                    
+             
 class Application:
     def __init__(self):
         pass 
       
-    def hello(self):
-        console.log("Start Main")
+    def setAceEditor(self, panel):
+        self.panel = panel
+        window.setAceEditor(self.panel)
+        self.editor = UIEditor()
+        self.canvas = Canvas()
         
-    def setEditor(self, panel):
-        
-        self.panel = panel 
-        self.scene = Scene()
-        self.scene_editor = self.scene.ed
-        
-    def setPage(self, name):
-        pass
+    def start(self):
+        self.setAceEditor("right")
         
 $(def():        
     window.app = Application();
-    app.setEditor("right")
+    app.start()
 )

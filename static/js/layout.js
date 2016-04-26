@@ -1,4 +1,4 @@
-window.setEditor = function (_panel) {
+window.setAceEditor = function (_panel) {
     
    
     var panel = _panel === undefined && "right" || _panel; 
